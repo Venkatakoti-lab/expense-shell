@@ -63,7 +63,7 @@ systemctl enable backend &>>$LOG_FILE
 VALIDATE $? "enable backend"
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "install mysql"
-mysql -h 172.31.29.71 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
+mysql -h mysql.kanakam.shop -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>$LOG_FILE
 VALIDATE $? "load schema"
 systemctl restart backend &>>$LOG_FILE
 VALIDATE $? "restart backend"
