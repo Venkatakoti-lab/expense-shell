@@ -45,8 +45,10 @@ mkdir -p /app &>>$LOG_FILE
 VALIDATE $? "create directory"
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE
 VALIDATE $? "downloading backend code"
-cd /app &>>$LOG_FILE
-VALIDATE $? "changing app directory"
+
+cd /app 
+rm -rf /app/*
+
 unzip /tmp/backend.zip
 VALIDATE $? "unzipping the code"
 npm install &>>$LOG_FILE
