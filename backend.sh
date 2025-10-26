@@ -53,7 +53,7 @@ unzip /tmp/backend.zip &>>$LOG_FILE
 VALIDATE $? "unzipping the code"
 npm install &>>$LOG_FILE
 VALIDATE $? "install npm dependencies"
-copy /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service 
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service 
 
 systemctl daemon-reload &>>$LOG_FILE
 VALIDATE $? "daemon reload"
