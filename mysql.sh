@@ -25,15 +25,15 @@ CHECK_ROOT (){
     fi
 }
 
-echo  "This script executed at: $TIMESTAMP"
+echo  "This script executed at: $TIMESTAMP" &>>$LOG_FILE
 CHECK_ROOT
-mkdir -p $LOGS_FOLDER
+mkdir -p $LOGS_FOLDER &>>LOG_FILE
 
-dnf install mysql-server -y
+dnf install mysql-server -y &>>LOG_FILE
 VALIDATE $? "install mysql"
-systemctl enable mysqld
+systemctl enable mysqld &>>LOG_FILE
 VALIDATE $? "enable mysqld"
-systemctl start mysqld
+systemctl start mysqld &>>LOG_FILE
 VALIDATE $? "start mysqld"
-mysql_secure_installation --set-root-pass ExpenseApp@1
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOG_FILE
 VALIDATE $? "setting up sql root password"
